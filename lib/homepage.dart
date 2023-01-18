@@ -7,6 +7,27 @@ List story = [
   {"name": "İbrahim", "image": "assets/3.png"},
 ];
 
+List post = [
+  {
+    "name": "Enzel",
+    "time": "21 hour ago",
+    "image": "assets/img11.png",
+    "imagepost": "assets/img1.png",
+  },
+  {
+    "name": "Bahadır",
+    "time": "18 hour ago",
+    "image": "assets/img22.png",
+    "imagepost": "assets/img2.png",
+  },
+  {
+    "name": "Buğra",
+    "time": "14 hour ago",
+    "image": "assets/img33.png",
+    "imagepost": "assets/img3.png",
+  },
+];
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -23,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Container(
             width: 428,
-            height: 295,
+            height: 290,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(42),
@@ -72,12 +93,13 @@ class _HomePageState extends State<HomePage> {
                         return Column(
                           children: [
                             Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               width: 100,
                               height: 84,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(38),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                   begin: Alignment.bottomCenter,
                                   end: Alignment.topCenter,
                                   colors: [
@@ -111,10 +133,10 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             Text(
                               "${story[index]["name"]}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 15,
                                   fontFamily: "RobotoCondensed Pro"),
@@ -127,7 +149,206 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-          )
+          ),
+          Expanded(
+              child: ListView.builder(
+                  itemCount: post.length,
+                  itemBuilder: ((context, index) {
+                    return Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(39)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Stack(
+                              children: [
+                                Image.asset("${post[index]["imagepost"]}"),
+                                Padding(
+                                  padding: const EdgeInsets.all(20),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: 59,
+                                            height: 59,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(38),
+                                              gradient: const LinearGradient(
+                                                begin: Alignment.bottomCenter,
+                                                end: Alignment.topCenter,
+                                                colors: [
+                                                  Color.fromARGB(
+                                                      255, 81, 142, 255),
+                                                  Color.fromARGB(
+                                                      255, 155, 92, 255)
+                                                ],
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(2),
+                                              child: Container(
+                                                width: 53,
+                                                height: 53,
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(
+                                                      255, 66, 66, 66),
+                                                  borderRadius:
+                                                      BorderRadius.circular(38),
+                                                ),
+                                                child: Image.asset(
+                                                  "${post[index]["image"]}",
+                                                  scale: 1.1,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "${post[index]["name"]}",
+                                                  style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 18,
+                                                      fontFamily:
+                                                          "RobotoCondensed"),
+                                                ),
+                                                Text(
+                                                  "${post[index]["time"]}",
+                                                  style: const TextStyle(
+                                                      color: Colors.white70,
+                                                      fontSize: 14,
+                                                      fontFamily:
+                                                          "RobotoCondensed Pro"),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: Colors.white
+                                                    .withOpacity(0.2)),
+                                            width: 57,
+                                            height: 57,
+                                            child: Image.asset(
+                                                "assets/bookmark.png"),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 161, right: 15),
+                                  child: Container(
+                                    alignment: Alignment.centerRight,
+                                    child: Column(
+                                      children: [
+                                        Image.asset("assets/share.png"),
+                                        SizedBox(height: 30),
+                                        Column(
+                                          children: [
+                                            Image.asset("assets/comment.png"),
+                                            const Text(
+                                              "261",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 14,
+                                                  fontFamily:
+                                                      "RobotoCondensed Pro"),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(height: 30),
+                                        Container(
+                                          width: 65,
+                                          height: 80,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(28),
+                                              border: Border.all(
+                                                  width: 0.5,
+                                                  color: Colors.white
+                                                      .withOpacity(0.6))),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Image.asset("assets/like.png"),
+                                              const Text(
+                                                "6.1k",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 14,
+                                                    fontFamily:
+                                                        "RobotoCondensed Pro"),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 409,
+                          height: 67,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color.fromARGB(255, 218, 218, 218)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/1.png",
+                                      scale: 2,
+                                    ),
+                                    SizedBox(width: 30),
+                                    Text(
+                                      "Yorum yap ...",
+                                      style: TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 14,
+                                          fontFamily: "RobotoCondensed Pro"),
+                                    )
+                                  ],
+                                ),
+                                Text("(261 Yorum)",  style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                          fontFamily: "RobotoCondensed Pro"))
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  })))
         ],
       ),
     );
